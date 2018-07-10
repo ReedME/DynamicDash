@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Link } from 'react-router-dom';
@@ -22,14 +21,8 @@ import { collapsedSidebarAction } from 'Actions';
 import { getAppLayout } from "Helpers/helpers";
 
 // components
-import Notifications from './Notifications';
-import ChatSidebar from './ChatSidebar';
-import DashboardOverlay from '../DashboardOverlay/DashboardOverlay';
-import LanguageProvider from './LanguageProvider';
 import SearchForm from './SearchForm';
-import QuickLinks from './QuickLinks';
 import MobileSearchForm from './MobileSearchForm';
-import Cart from './Cart';
 
 // intl messages
 import IntlMessages from 'Util/IntlMessages';
@@ -115,7 +108,6 @@ class Header extends Component {
 										</Tooltip>
 									</li>
 								}
-								{!horizontalMenu && <QuickLinks />}
 								<li className="list-inline-item search-icon d-inline-block">
 									<SearchForm />
 									<IconButton mini="true" className="search-icon-btn" onClick={() => this.openMobileSearchForm()}>
@@ -130,32 +122,6 @@ class Header extends Component {
 						}
 					</div>
 					<ul className="navbar-right list-inline">
-						<li className="list-inline-item summary-icon">
-							<Tooltip title="Summary" placement="bottom">
-								<a href="javascript:void(0)" className="header-icon tour-step-3" onClick={() => this.openDashboardOverlay()}>
-									<i className="zmdi zmdi-info-outline"></i>
-								</a>
-							</Tooltip>
-						</li>
-						{!horizontalMenu &&
-							<li className="list-inline-item">
-								<Tooltip title="Upgrade" placement="bottom">
-									<Button component={Link} to={`/${getAppLayout(location)}/pages/pricing`} variant="raised" className="tour-step-4 text-white" color="primary">
-										<IntlMessages id="widgets.upgrade" />
-									</Button>
-								</Tooltip>
-							</li>
-						}
-						<LanguageProvider />
-						<Notifications />
-						<Cart />
-						<li className="list-inline-item setting-icon">
-							<Tooltip title="Chat" placement="bottom">
-								<IconButton aria-label="settings" onClick={() => this.setState({ customizer: true })}>
-									<i className="zmdi zmdi-comment"></i>
-								</IconButton>
-							</Tooltip>
-						</li>
 						<li className="list-inline-item">
 							<Tooltip title="Full Screen" placement="bottom">
 								<IconButton aria-label="settings" onClick={() => this.toggleScreenFull()}>
@@ -164,17 +130,7 @@ class Header extends Component {
 							</Tooltip>
 						</li>
 					</ul>
-					<Drawer
-						anchor={'right'}
-						open={this.state.customizer}
-						onClose={() => this.setState({ customizer: false })}
-					>
-						<ChatSidebar />
-					</Drawer>
 				</Toolbar>
-				<DashboardOverlay
-					onClose={() => this.closeDashboardOverlay()}
-				/>
 			</AppBar>
 		);
 	}
