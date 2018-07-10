@@ -1,7 +1,7 @@
 {
-  "name": "reactify",
-  "version": "3.0.0",
-  "description": "A Material Design Reactjs + Redux Admin Template",
+  "name": "dynamicdash",
+  "version": "0.1.0",
+  "description": "An Administration platform for Dynamic Hydro Excavations",
   "scripts": {
     "start": "webpack-dev-server --mode development --hot --progress",
     "build": "webpack --mode production"
@@ -32,7 +32,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.0",
-    "node-sass": "^4.8.3",
+    "node-sass": "^4.9.2",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "sass-loader": "^6.0.7",
@@ -54,7 +54,7 @@
     "classnames": "2.2.6",
     "downshift": "1.31.16",
     "draft-js": "0.10.5",
-    "firebase": "^4.12.1",
+    "firebase": "^5.2.0",
     "globalize": "^0.1.1",
     "google-map-react": "^0.34.0",
     "instantsearch.css": "^7.1.0",
