@@ -9,7 +9,7 @@
   "keywords": [
     "reactjs"
   ],
-  "author": "The Iron Network",
+  "author": "Brendan Reed",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -32,7 +32,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.0",
-    "node-sass": "^4.9.2",
+    "node-sass": "^4.8.3",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "sass-loader": "^6.0.7",
@@ -72,7 +72,6 @@
     "react-chartjs-2": "^2.7.0",
     "react-content-loader": "^3.1.2",
     "react-countup": "^3.0.3",
-    "react-credit-cards": "^0.7.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-d3-speedometer": "^0.3.2",
     "react-dnd": "4.0.4",

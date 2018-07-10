@@ -19,7 +19,5 @@ import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 //Algolia css
 import 'instantsearch.css/themes/algolia.css'
-//Credit Card
-import 'react-credit-cards/src/styles.scss'
 // Custom Style File
 import 'Assets/scss/_style.scss';

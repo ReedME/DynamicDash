@@ -1,34 +1,16 @@
-/**
- * Firebase Login
- * Reactify comes with built in firebase login feature
- * You Need To Add Your Firsebase App Account Details Here
- */
-import firebase from 'firebase';
+/*
+index.js: It’s a simple entry point file to the 
+Firebase module (src/firebase/ folder) by grouping 
+and exposing all the functionalities from the module 
+to other modules in one file. Thus it shouldn’t 
+be necessary for other modules in your application 
+to access any other file than this one to use its functionalities.
+*/
 
-// Initialize Firebase 
-const config = {
-    apiKey: "AIzaSyD_2FLh1f_BJyKdzeqMvF-oB9Av2cLG6ps", // Your Api key will be here
-    authDomain: "reactify-61b82.firebaseapp.com", // Your auth domain
-    databaseURL: "https://reactify-61b82.firebaseio.com", // data base url
-    projectId: "reactify-61b82", // project id
-    storageBucket: "", // storage bucket
-    messagingSenderId: "598228895769" // messaging sender id
-};
-
-firebase.initializeApp(config);
-
-const auth = firebase.auth();
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
-const githubAuthProvider = new firebase.auth.GithubAuthProvider();
-const twitterAuthProvider = new firebase.auth.TwitterAuthProvider();
-const database = firebase.database();
+import * as auth from './auth';
+import * as firebase from './firebase';
 
 export {
-    auth,
-    googleAuthProvider,
-    githubAuthProvider,
-    facebookAuthProvider,
-    twitterAuthProvider,
-    database
+  auth,
+  firebase,
 };
