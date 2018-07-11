@@ -25,6 +25,13 @@ class UserBlock extends Component {
 	}
 
 	/**
+	 * Logout User
+	 */
+	logoutUser() {
+		this.props.logoutUserFromFirebase();
+	}
+
+	/**
 	 * Toggle User Dropdown Menu
 	 */
 	toggleUserDropdownMenu() {
@@ -129,7 +136,7 @@ class UserBlock extends Component {
 									</Link>
 								</li>
 								<li className="border-top">
-									<a href="javascript:void(0)">
+									<a href="javascript:void(0)" onClick={() => this.logoutUser()}>
 										<i className="ti ti-power-off"></i>
 										<IntlMessages id="widgets.logOut" />
 									</a>

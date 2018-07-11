@@ -3,7 +3,7 @@
  */
 const AppConfig = {
     appLogo: require('Assets/img/site-logo.png'),          // App Logo
-    brandName: 'Reactify',                                    // Brand Name
+    brandName: 'Dynamic Hydro Excavations',                                    // Brand Name
     navCollapsed: false,                                      // Sidebar collapse
     darkMode: false,                                          // Dark Mode
     boxLayout: false,                                         // Box Layout
@@ -20,10 +20,10 @@ const AppConfig = {
         icon: 'en',
     },
     enableUserTour: process.env.NODE_ENV === 'production' ? true : false,  // Enable / Disable User Tour
-    copyRightText: 'Reactify © 2018 All Rights Reserved.',      // Copy Right Text
+    copyRightText: 'Dynamic Hydro Excavations © 2018 All Rights Reserved.',      // Copy Right Text
     // light theme colors
     themeColors: {
-        'primary': '#5D92F4',
+        'primary': '#871f2c',
         'secondary': '#677080',
         'success': '#00D014',
         'danger': '#FF3739',

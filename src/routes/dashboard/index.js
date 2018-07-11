@@ -6,7 +6,9 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 // async components
 import {
-   AsyncEcommerceDashboardComponent
+   AsyncEcommerceDashboardComponent,
+   AsyncSaasDashboardComponent,
+   AsyncAgencyDashboardComponent
 } from 'Components/AsyncComponent/AsyncComponent';
 
 const Dashboard = ({ match }) => (
@@ -14,6 +16,8 @@ const Dashboard = ({ match }) => (
       <Switch>
          <Redirect exact from={`${match.url}/`} to={`${match.url}/ecommerce`} />
          <Route path={`${match.url}/ecommerce`} component={AsyncEcommerceDashboardComponent} />
+         <Route path={`${match.url}/saas`} component={AsyncSaasDashboardComponent} />
+         <Route path={`${match.url}/agency`} component={AsyncAgencyDashboardComponent} />
       </Switch>
    </div>
 );

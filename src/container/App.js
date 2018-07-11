@@ -9,8 +9,44 @@ import { NotificationContainer } from 'react-notifications';
 // rct theme provider
 import RctThemeProvider from './RctThemeProvider';
 
+//Horizontal Layout
+import HorizontalLayout from './HorizontalLayout';
+
+//Agency Layout
+import AgencyLayout from './AgencyLayout';
+
 //Main App
 import MainApp from 'Routes';
+
+// app signin
+import AppSignIn from './SigninFirebase';
+import AppSignUp from './SignupFirebase';
+
+// async components
+import {
+	AsyncSessionLoginComponent,
+	AsyncSessionRegisterComponent,
+	AsyncSessionLockScreenComponent,
+	AsyncSessionForgotPasswordComponent,
+	AsyncSessionPage404Component,
+	AsyncSessionPage500Component,
+	AsyncTermsConditionComponent
+} from 'Components/AsyncComponent/AsyncComponent';
+
+//Auth0
+import Auth from '../Auth/Auth';
+
+// callback component
+import Callback from "Components/Callback/Callback";
+
+//Auth0 Handle Authentication
+const auth = new Auth();
+
+const handleAuthentication = ({ location }) => {
+	if (/access_token|id_token|error/.test(location.hash)) {
+		auth.handleAuthentication();
+	}
+}
 
 /**
  * Initial Path To Check Whether User Is Logged In Or Not
@@ -18,15 +54,26 @@ import MainApp from 'Routes';
 const InitialPath = ({ component: Component, ...rest, authUser }) =>
 	<Route
 		{...rest}
-		render={props => <Component {...props} />
-		}
+		render={props =>
+			authUser
+				? <Component {...props} />
+				: <Redirect
+					to={{
+						pathname: '/signin',
+						state: { from: props.location }
+					}}
+				/>}
 	/>;
 
 class App extends Component {
 	render() {
 		const { location, match, user } = this.props;
 		if (location.pathname === '/') {
-			return (<Redirect to={'/app/dashboard/ecommerce'} />);
+			if (user === null) {
+				return (<Redirect to={'/signin'} />);
+			} else {
+				return (<Redirect to={'/app/dashboard/ecommerce'} />);
+			}
 		}
 		return (
 			<RctThemeProvider>
@@ -36,6 +83,24 @@ class App extends Component {
 					authUser={user}
 					component={MainApp}
 				/>
+				<Route path="/horizontal" component={HorizontalLayout} />
+				<Route path="/agency" component={AgencyLayout} />
+				<Route path="/signin" component={AppSignIn} />
+				<Route path="/signup" component={AppSignUp} />
+				<Route path="/session/login" component={AsyncSessionLoginComponent} />
+				<Route path="/session/register" component={AsyncSessionRegisterComponent} />
+				<Route path="/session/lock-screen" component={AsyncSessionLockScreenComponent} />
+				<Route
+					path="/session/forgot-password"
+					component={AsyncSessionForgotPasswordComponent}
+				/>
+				<Route path="/session/404" component={AsyncSessionPage404Component} />
+				<Route path="/session/500" component={AsyncSessionPage500Component} />
+				<Route path="/terms-condition" component={AsyncTermsConditionComponent} />
+				<Route path="/callback" render={(props) => {
+					handleAuthentication(props);
+					return <Callback {...props} />
+				}} />
 			</RctThemeProvider>
 		);
 	}
